@@ -1,7 +1,5 @@
 package br.com.edigi.modelo;
 
-import java.util.Objects;
-
 public class Livro {
 
     private String titulo;
@@ -35,6 +33,7 @@ public class Livro {
     }
 
     public String getTitulo() {
+
         return titulo;
     }
 
@@ -46,6 +45,7 @@ public class Livro {
     }
 
     public String getResumo() {
+
         return resumo;
     }
 
@@ -107,6 +107,7 @@ public class Livro {
     }
 
     public int getEdicao() {
+
         return edicao;
     }
 
