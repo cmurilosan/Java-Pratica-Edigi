@@ -10,8 +10,7 @@ public class AdminAutores {
 
     private static List<Autor> listaDeAutores = new ArrayList<>();
 
-    public static List<Autor> getListaDeAutores() {
-
+    public List<Autor> getListaDeAutores() {
         return Collections.unmodifiableList(listaDeAutores);
     }
 

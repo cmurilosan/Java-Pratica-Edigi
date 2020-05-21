@@ -10,8 +10,7 @@ public class AdminCategoria {
 
     private static List<Categoria> listaDeCategoria = new ArrayList<>();
 
-    public static List<Categoria> getListaDeCategoria(){
-
+    public List<Categoria> getListaDeCategoria(){
         return Collections.unmodifiableList(listaDeCategoria);
     }
 

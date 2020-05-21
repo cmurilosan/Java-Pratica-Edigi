@@ -71,6 +71,7 @@ public class Livro {
     }
 
     public int getNumeroPaginas() {
+
         return numeroPaginas;
     }
 
