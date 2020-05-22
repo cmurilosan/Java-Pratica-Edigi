@@ -1,14 +1,11 @@
 package br.com.edigi.modelo;
 
-import java.time.LocalDate;
-import java.util.Objects;
-
 public class Categoria {
 
     private String nome;
-    private LocalDate dataCadastro;
 
     public Categoria(String nome) {
+
         setNome(nome);
     }
 
