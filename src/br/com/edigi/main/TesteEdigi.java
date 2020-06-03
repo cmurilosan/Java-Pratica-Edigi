@@ -86,7 +86,7 @@ public class TesteEdigi {
 //		System.out.println(CadastroAutores.getListaDeAutores());
 //		System.out.println(CadastroCategorias.getListaDeCategoria());
 
-        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("JAVA");
+        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("ja");
         System.out.println("Resultado da busca: " + livrosEncontrados);
 
     }
