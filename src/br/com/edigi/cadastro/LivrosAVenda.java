@@ -9,10 +9,10 @@ public class LivrosAVenda {
 
     public LivrosAVenda(Livro livro, int quantidade) {
 
-        if (this.livro == null) {
+        if (livro == null) {
             throw new NullPointerException("Livro não pode ser NULL");
         }
-        if (this.quantidade < 1) {
+        if (quantidade < 1) {
             throw new IllegalArgumentException("A quantidade de livros deve ser de pelo menos 1.");
         }
         this.livro = livro;
@@ -29,5 +29,13 @@ public class LivrosAVenda {
 
     public void incrementaQuantidade(int quantidade) {
         this.quantidade = this.quantidade + quantidade;
+    }
+
+    @Override
+    public String toString() {
+        return "LivrosAVenda{" +
+                "livro=" + livro +
+                ", quantidade=" + quantidade +
+                '}';
     }
 }
