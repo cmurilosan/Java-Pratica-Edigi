@@ -5,8 +5,6 @@ import br.com.edigi.modelo.Autor;
 import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
 
-import java.util.List;
-
 public class TesteEdigi {
 
     public static void main(String[] args) {
@@ -87,16 +85,21 @@ public class TesteEdigi {
 //        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("ja");
 //        System.out.println("Resultado da busca: " + livrosEncontrados);
 
-        LivrosAVenda livroReactAVenda = new LivrosAVenda(react, 10);
-        LivrosAVenda livroJavaAVenda = new LivrosAVenda(java, 5);
-        LivrosAVenda livroAndroidAVenda = new LivrosAVenda(android, 13);
-        LivrosAVenda livroJavascriptAVenda = new LivrosAVenda(javascript, 15);
+        LivroAVenda livroReactAVenda = new LivroAVenda(react, 10);
+        LivroAVenda livroJavaAVenda = new LivroAVenda(java, 5);
+        LivroAVenda livroAndroidAVenda = new LivroAVenda(android, 13);
+        LivroAVenda livroJavascriptAVenda = new LivroAVenda(javascript, 15);
 
         AdminLivrosAVenda adminLivrosAVenda = new AdminLivrosAVenda();
 
         adminLivrosAVenda.insereLivrosAVenda(livroReactAVenda, livroJavaAVenda, livroAndroidAVenda, livroJavascriptAVenda);
 
-        System.out.println(AdminLivrosAVenda.getLivrosAVenda());
+        System.out.println(AdminLivrosAVenda.getLivroAVenda());
+
+        adminLivrosAVenda.carrinhoDeCompras(livroAndroidAVenda);
+        System.out.println(AdminLivrosAVenda.getCarrinhoDeCompras());
+
+
 
     }
 

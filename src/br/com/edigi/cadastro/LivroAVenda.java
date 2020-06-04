@@ -2,12 +2,12 @@ package br.com.edigi.cadastro;
 
 import br.com.edigi.modelo.Livro;
 
-public class LivrosAVenda {
+public class LivroAVenda {
 
     private Livro livro;
     private int quantidade;
 
-    public LivrosAVenda(Livro livro, int quantidade) {
+    public LivroAVenda(Livro livro, int quantidade) {
 
         if (livro == null) {
             throw new NullPointerException("Livro não pode ser NULL");
@@ -20,15 +20,13 @@ public class LivrosAVenda {
     }
 
     public void incrementaQuantidade() {
+
         this.quantidade++;
     }
 
     public void decrementaQuantidade() {
-        this.quantidade--;
-    }
 
-    public void incrementaQuantidade(int quantidade) {
-        this.quantidade = this.quantidade + quantidade;
+        this.quantidade--;
     }
 
     @Override
