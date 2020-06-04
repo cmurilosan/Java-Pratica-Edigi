@@ -33,9 +33,8 @@ public class LivrosAVenda {
 
     @Override
     public String toString() {
-        return "LivrosAVenda{" +
-                "livro=" + livro +
-                ", quantidade=" + quantidade +
-                '}';
+        return "\n================== LIVROS DISPONÍVEIS PARA VENDA ==================" +
+                "\n" + livro +
+                "\nUNIDADES DISPONÍVEIS: " + quantidade;
     }
 }

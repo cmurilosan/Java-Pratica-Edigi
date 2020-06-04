@@ -1,8 +1,6 @@
 package br.com.edigi.main;
 
-import br.com.edigi.cadastro.AdminAutores;
-import br.com.edigi.cadastro.AdminCategoria;
-import br.com.edigi.cadastro.AdminLivro;
+import br.com.edigi.cadastro.*;
 import br.com.edigi.modelo.Autor;
 import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
@@ -86,8 +84,19 @@ public class TesteEdigi {
 //		System.out.println(CadastroAutores.getListaDeAutores());
 //		System.out.println(CadastroCategorias.getListaDeCategoria());
 
-        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("ja");
-        System.out.println("Resultado da busca: " + livrosEncontrados);
+//        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("ja");
+//        System.out.println("Resultado da busca: " + livrosEncontrados);
+
+        LivrosAVenda livroReactAVenda = new LivrosAVenda(react, 10);
+        LivrosAVenda livroJavaAVenda = new LivrosAVenda(java, 5);
+        LivrosAVenda livroAndroidAVenda = new LivrosAVenda(android, 13);
+        LivrosAVenda livroJavascriptAVenda = new LivrosAVenda(javascript, 15);
+
+        AdminLivrosAVenda adminLivrosAVenda = new AdminLivrosAVenda();
+
+        adminLivrosAVenda.insereLivrosAVenda(livroReactAVenda, livroJavaAVenda, livroAndroidAVenda, livroJavascriptAVenda);
+
+        System.out.println(AdminLivrosAVenda.getLivrosAVenda());
 
     }
 
