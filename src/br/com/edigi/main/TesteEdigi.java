@@ -2,6 +2,7 @@ package br.com.edigi.main;
 
 import br.com.edigi.cadastro.*;
 import br.com.edigi.modelo.Autor;
+import br.com.edigi.modelo.CarrinhoDeCompras;
 import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
 
@@ -85,22 +86,12 @@ public class TesteEdigi {
 //        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("ja");
 //        System.out.println("Resultado da busca: " + livrosEncontrados);
 
-        LivroAVenda livroReactAVenda = new LivroAVenda(react, 10);
-        LivroAVenda livroJavaAVenda = new LivroAVenda(java, 5);
-        LivroAVenda livroAndroidAVenda = new LivroAVenda(android, 13);
-        LivroAVenda livroJavascriptAVenda = new LivroAVenda(javascript, 15);
+        CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+        carrinhoDeCompras.add(android);
+        carrinhoDeCompras.add(android);
+        carrinhoDeCompras.add(java);
 
-        AdminLivrosAVenda adminLivrosAVenda = new AdminLivrosAVenda();
-
-        adminLivrosAVenda.insereLivrosAVenda(livroReactAVenda, livroJavaAVenda, livroAndroidAVenda, livroJavascriptAVenda);
-
-        System.out.println(AdminLivrosAVenda.getLivroAVenda());
-
-        adminLivrosAVenda.carrinhoDeCompras(livroAndroidAVenda);
-        System.out.println(AdminLivrosAVenda.getCarrinhoDeCompras());
-
-
-
+        carrinhoDeCompras.finalizaCompra();
     }
 
 }
