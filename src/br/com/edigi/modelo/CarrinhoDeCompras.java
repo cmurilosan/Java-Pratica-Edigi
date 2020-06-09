@@ -6,7 +6,6 @@ import java.util.Map;
 
 public class CarrinhoDeCompras {
 
-    private double valorTotal;
     private LocalDateTime dataVenda;
 
     private Map<Livro, Integer> livros = new HashMap<>();
@@ -18,7 +17,14 @@ public class CarrinhoDeCompras {
         } else {
             this.livros.put(livro, 1);
         }
-        this.valorTotal += livro.getPreco();
+    }
+
+    public double getValorTotal() {
+        double valorTotal = 0;
+        for (Livro valor: livros.keySet()) {
+            valorTotal += valor.getPreco();
+        }
+        return valorTotal;
     }
 
     public void finalizaCompra() {
@@ -30,6 +36,6 @@ public class CarrinhoDeCompras {
                     " - Quantidade " + livros.get(livro) +
                     " - Valor Unitário: " + livro.getPreco() +  "\n";
         }
-        System.out.println(livroQuantidade + "Total da Compra: " + valorTotal);
+        System.out.println(livroQuantidade + "Total da Compra: " + this.getValorTotal());
     }
 }
