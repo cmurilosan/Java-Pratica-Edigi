@@ -7,6 +7,7 @@ import java.util.Map;
 public class CarrinhoDeCompras {
 
     private LocalDateTime dataVenda;
+    private Double valorTotal;
 
     private Map<Livro, Integer> livros = new HashMap<>();
 
@@ -20,11 +21,11 @@ public class CarrinhoDeCompras {
     }
 
     public double getValorTotal() {
-        double valorTotal = 0;
-        for (Livro valor: livros.keySet()) {
-            valorTotal += valor.getPreco();
-        }
-        return valorTotal;
+        return livros.keySet()
+                .stream()
+                .mapToDouble(Livro::getPreco)
+                .sum()
+                ;
     }
 
     public void finalizaCompra() {
