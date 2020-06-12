@@ -34,4 +34,8 @@ public class AdminLivro {
         return tituloMaiusculo.contains(palavraMaiusculo);
     }
 
+    public boolean contem(Livro livro) {
+        return listaDeLivros.contains(livro);
+    }
+
 }

@@ -78,7 +78,6 @@ public class TesteEdigi {
         cadastroDeLivros.insereLivro(java);
         cadastroDeLivros.insereLivro(react);
         cadastroDeLivros.insereLivro(android);
-        cadastroDeLivros.insereLivro(javascript);
 
 //		System.out.println(CadastroAutores.getListaDeAutores());
 //		System.out.println(CadastroCategorias.getListaDeCategoria());
@@ -89,9 +88,10 @@ public class TesteEdigi {
         CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
         carrinhoDeCompras.add(android);
         carrinhoDeCompras.add(android);
-        carrinhoDeCompras.add(java);
+        carrinhoDeCompras.add(javascript);
 
         carrinhoDeCompras.finalizaCompra();
+
     }
 
 }

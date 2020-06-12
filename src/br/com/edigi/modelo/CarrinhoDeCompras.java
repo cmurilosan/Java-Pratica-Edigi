@@ -1,5 +1,7 @@
 package br.com.edigi.modelo;
 
+import br.com.edigi.cadastro.AdminLivro;
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,11 +9,14 @@ import java.util.Map;
 public class CarrinhoDeCompras {
 
     private LocalDateTime dataVenda;
-    private Double valorTotal;
+    private AdminLivro adminLivro = new AdminLivro();
 
     private Map<Livro, Integer> livros = new HashMap<>();
 
     public void add(Livro livro) {
+        if (!adminLivro.contem(livro)) {
+            throw new IllegalArgumentException("Os livros adicionados a venda precisam existir no catálogo de livros.");
+        }
         if (this.livros.containsKey(livro)) {
             int novaQuantidade = this.livros.get(livro) + 1;
             this.livros.put(livro, novaQuantidade);
@@ -24,8 +29,7 @@ public class CarrinhoDeCompras {
         return livros.keySet()
                 .stream()
                 .mapToDouble(Livro::getPreco)
-                .sum()
-                ;
+                .sum();
     }
 
     public void finalizaCompra() {
