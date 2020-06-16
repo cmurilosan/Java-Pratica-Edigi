@@ -15,7 +15,8 @@ public class CarrinhoDeCompras {
 
     public void add(Livro livro) {
         if (!adminLivro.contem(livro)) {
-            throw new IllegalArgumentException("Os livros adicionados a venda precisam existir no catálogo de livros.");
+            throw new RuntimeException("Os livros adicionados a venda precisam existir no catálogo de livros.");
+            //Erro de tempo de execução
         }
         if (this.livros.containsKey(livro)) {
             int novaQuantidade = this.livros.get(livro) + 1;
