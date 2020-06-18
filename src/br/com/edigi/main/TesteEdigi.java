@@ -1,13 +1,10 @@
 package br.com.edigi.main;
 
-import br.com.edigi.cadastro.AdminAutores;
-import br.com.edigi.cadastro.AdminCategoria;
-import br.com.edigi.cadastro.AdminLivro;
+import br.com.edigi.cadastro.*;
 import br.com.edigi.modelo.Autor;
+import br.com.edigi.modelo.CarrinhoDeCompras;
 import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
-
-import java.util.List;
 
 public class TesteEdigi {
 
@@ -81,13 +78,19 @@ public class TesteEdigi {
         cadastroDeLivros.insereLivro(java);
         cadastroDeLivros.insereLivro(react);
         cadastroDeLivros.insereLivro(android);
-        cadastroDeLivros.insereLivro(javascript);
 
 //		System.out.println(CadastroAutores.getListaDeAutores());
 //		System.out.println(CadastroCategorias.getListaDeCategoria());
 
-        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("JAVA");
-        System.out.println("Resultado da busca: " + livrosEncontrados);
+//        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("ja");
+//        System.out.println("Resultado da busca: " + livrosEncontrados);
+
+        CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+        carrinhoDeCompras.add(android);
+        carrinhoDeCompras.add(android);
+        carrinhoDeCompras.add(java);
+
+        carrinhoDeCompras.finalizaCompra();
 
     }
 
