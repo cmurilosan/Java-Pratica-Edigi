@@ -29,19 +29,29 @@ public class CarrinhoDeCompras {
     public double getValorTotal() {
         return livros.keySet()
                 .stream()
-                .mapToDouble(Livro::getPreco)
+                .mapToDouble(livro -> livros.get(livro) * livro.getPreco())
                 .sum();
     }
 
     public void finalizaCompra() {
-        System.out.println("VENDA REALIZADA COM SUCESSO");
+        StringBuilder builder = new StringBuilder("VENDA REALIZADA COM SUCESSO!!!\n");
+
         this.dataVenda = LocalDateTime.now();
-        String livroQuantidade = "";
+
         for (Livro livro : livros.keySet()) {
-            livroQuantidade += "Livro " + livro.getTitulo() +
-                    " - Quantidade " + livros.get(livro) +
-                    " - Valor Unitário: " + livro.getPreco() +  "\n";
+            builder.append("Livro: ")
+                    .append(livro.getTitulo())
+                    .append(" - ")
+                    .append("Quantidade: ")
+                    .append(livros.get(livro))
+                    .append(" - ")
+                    .append("Valor unitario: ")
+                    .append(livro.getPreco())
+                    .append("\n");
         }
-        System.out.println(livroQuantidade + "Total da Compra: " + this.getValorTotal());
+        builder.append("\nTOTAL DA COMPRA: ")
+                .append(this.getValorTotal());
+
+        System.out.println(builder.toString());
     }
 }

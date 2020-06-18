@@ -88,7 +88,7 @@ public class TesteEdigi {
         CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
         carrinhoDeCompras.add(android);
         carrinhoDeCompras.add(android);
-//        carrinhoDeCompras.add(javascript);
+        carrinhoDeCompras.add(java);
 
         carrinhoDeCompras.finalizaCompra();
 
