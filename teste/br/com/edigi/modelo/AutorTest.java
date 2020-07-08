@@ -9,36 +9,30 @@ public class AutorTest {
     @Test
     public void autorPossuiUmNomeEEmail() {
 
-        new Autor("nome", "nome@email.com.br");
-        new Autor("sobrenome", "sobrenome@email.com");
+        Autor nome = new Autor("Nome e Sobrenome", "nome@email.com.br");
 
-        assertEquals("nome", "nome");
-        assertEquals("nome@email.com.br", "nome@email.com.br");
-        assertEquals("sobrenome@email.com", "sobrenome@email.com");
+        assertEquals("Nome e Sobrenome", nome.getNome());
+        assertEquals("nome@email.com.br", nome.getEmail());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void nomeAutorNaoPodeSerVazio() {
 
-        new Autor("", "nome@email.com.br");
-
-        assertEquals("nome", "");
+        Autor autor = new Autor("", "nome@email.com.br");
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void emailAutorNaoPodeSerVazio() {
 
-        new Autor("nome", "");
+        Autor autor = new Autor("nome", "");
 
-        assertEquals("nome@email.com.br", "");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void validaEmailAutor() {
 
-        new Autor("nome", "nomeemail.com.br");
+        Autor autor = new Autor("nome", "nomeemail.com.br");
 
-        assertEquals("nome@email.com.br", "nomeemail.com.br");
     }
 }

@@ -40,4 +40,12 @@ public class Autor {
                 "\nNome: " + this.nome +
                 "\nEmail: " + this.email;
     }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
 }
