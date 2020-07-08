@@ -4,6 +4,7 @@ import br.com.edigi.modelo.Autor;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AdminAutoresTest {
 
@@ -14,13 +15,15 @@ public class AdminAutoresTest {
 
         Autor cassio = new Autor("Cassio", "cassio@alura.com.br");
         Autor murilo = new Autor("Murilo", "murilo@alura.com.br");
-        Autor santos = new Autor("Santos", "santos@alura.com.br");
 
         lista.insereAutor(cassio);
         lista.insereAutor(murilo);
-        lista.insereAutor(santos);
 
-        assertEquals(3, lista.getListaDeAutores().size());
+        assertEquals(2, lista.getListaDeAutores().size());
+        assertTrue("Cassio", lista.getListaDeAutores().contains(cassio));
+        assertTrue("cassio@alura.com.br", lista.getListaDeAutores().contains(cassio));
+        assertTrue("Murilo", lista.getListaDeAutores().contains(murilo));
+        assertTrue("murilo@alura.com.br", lista.getListaDeAutores().contains(murilo));
     }
 
     @Test(expected = RuntimeException.class)
@@ -35,8 +38,6 @@ public class AdminAutoresTest {
         lista.insereAutor(cassio);
         lista.insereAutor(murilo);
         lista.insereAutor(santos);
-
-        assertEquals(3, lista.getListaDeAutores().size());
 
     }
 
