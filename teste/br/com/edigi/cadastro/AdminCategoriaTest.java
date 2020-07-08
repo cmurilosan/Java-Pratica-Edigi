@@ -4,6 +4,7 @@ import br.com.edigi.modelo.Categoria;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AdminCategoriaTest {
 
@@ -14,13 +15,13 @@ public class AdminCategoriaTest {
 
         Categoria programacao = new Categoria("Programação");
         Categoria frontend = new Categoria("Front-End");
-        Categoria mobile = new Categoria("mobile");
 
         lista.insereCategoria(programacao);
         lista.insereCategoria(frontend);
-        lista.insereCategoria(mobile);
 
-        assertEquals(3, lista.getListaDeCategoria().size());
+        assertEquals(2, lista.getListaDeCategoria().size());
+        assertTrue("Programação", lista.getListaDeCategoria().contains(programacao));
+        assertTrue("Front-End", lista.getListaDeCategoria().contains(frontend));
     }
 
     @Test(expected = RuntimeException.class)
@@ -33,8 +34,6 @@ public class AdminCategoriaTest {
         lista.insereCategoria(programação);
         lista.insereCategoria(frontend);
         lista.insereCategoria(mobile);
-
-        assertEquals(3, lista.getListaDeCategoria().size());
 
     }
 
