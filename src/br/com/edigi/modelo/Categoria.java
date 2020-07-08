@@ -28,4 +28,8 @@ public class Categoria {
                 "\nCategoria: " + this.nome +
                 "\n";
     }
+
+    public String getNome() {
+        return this.nome;
+    }
 }

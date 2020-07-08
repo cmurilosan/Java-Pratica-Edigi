@@ -9,17 +9,15 @@ public class CategoriaTest {
     @Test
     public void categoriaPossuiUmNome() {
 
-        new Categoria("Programação");
+        Categoria programação = new Categoria("Programação");
 
-        assertEquals("Programação", "Programação");
+        assertEquals("Programação", programação.getNome());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void nomeCategoriaNaoPodeSerVazio() {
 
-        new Categoria("");
-
-        assertEquals("Nome", "");
+        Categoria categoria = new Categoria("");
 
     }
 
