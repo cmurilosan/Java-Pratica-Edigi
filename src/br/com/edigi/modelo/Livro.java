@@ -34,7 +34,7 @@ public class Livro {
 
     public String getTitulo() {
 
-        return titulo;
+        return this.titulo;
     }
 
     private void setTitulo(String titulo) {
