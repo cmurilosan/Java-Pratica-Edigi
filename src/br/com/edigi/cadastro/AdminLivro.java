@@ -3,6 +3,7 @@ package br.com.edigi.cadastro;
 import br.com.edigi.modelo.Livro;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,4 +39,7 @@ public class AdminLivro {
         return listaDeLivros.contains(livro);
     }
 
+    public List<Livro> getListaDeLivros() {
+        return Collections.unmodifiableList(listaDeLivros);
+    }
 }
