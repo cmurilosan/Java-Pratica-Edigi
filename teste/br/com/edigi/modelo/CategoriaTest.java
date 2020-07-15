@@ -17,7 +17,7 @@ public class CategoriaTest {
     @Test(expected = IllegalArgumentException.class)
     public void nomeCategoriaNaoPodeSerVazio() {
 
-        Categoria categoria = new Categoria("");
+        new Categoria("");
 
     }
 
