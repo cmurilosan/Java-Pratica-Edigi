@@ -3,20 +3,28 @@ package br.com.edigi.cadastro;
 import br.com.edigi.modelo.Autor;
 import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class AdminLivroTest {
 
-    Autor cassio = new Autor("Cassio", "cassio@teste.com.br");
-    Autor murilo = new Autor("Murilo", "murilo@teste.com.br");
-    Categoria programacao = new Categoria("Programação");
+    private AdminLivro lista;
+    private Categoria programacao;
+    private Autor cassio;
+    private Autor murilo;
+
+    @Before
+    public void criaAdminLivroCategoriaEAutor() {
+        this.lista = new AdminLivro();
+        this.programacao = new Categoria("Programação");
+        this.cassio = new Autor("Cássio", "cassio@teste.com.br");
+        this.murilo = new Autor("Murilo", "murilo@teste.com.br");
+    }
 
     @Test
-    public void livroDeveConterNaLista() {
-
-        AdminLivro lista = new AdminLivro();
+    public void livroDeveConstarNaLista() {
 
         Livro java = new Livro(
                 "Java",
@@ -43,9 +51,7 @@ public class AdminLivroTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void livrosNaoPodemConterOMesmoNumeroIsbn() {
-
-        AdminLivro lista = new AdminLivro();
+    public void livrosNaoPodemTerOMesmoNumeroIsbn() {
 
         Livro java = new Livro(
                 "Java",
@@ -76,8 +82,6 @@ public class AdminLivroTest {
     @Test
     public void buscaPorTituloDeveTerNoMinimoDoisCaracteres() {
 
-        AdminLivro lista = new AdminLivro();
-
         Livro java = new Livro(
                 "Java",
                 "Este livro aborda Orientação a Objetos",
@@ -96,8 +100,6 @@ public class AdminLivroTest {
     @Test(expected = IllegalArgumentException.class)
     public void buscaPorTituloNaoDeveTerMenosQueDoisCaracteres() {
 
-        AdminLivro lista = new AdminLivro();
-
         Livro java = new Livro(
                 "Java",
                 "Este livro aborda Orientação a Objetos",
@@ -115,8 +117,6 @@ public class AdminLivroTest {
 
     @Test
     public void buscaPorTituloPodeSerEmLetraMaiusculaOuMinuscula() {
-
-        AdminLivro lista = new AdminLivro();
 
         Livro java = new Livro(
                 "Java",
