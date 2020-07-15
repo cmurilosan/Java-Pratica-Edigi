@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class AutorTest {
 
     @Test
-    public void autorPossuiUmNomeEEmail() {
+    public void autorDeveTerNomeEEmail() {
 
         Autor nome = new Autor("Nome e Sobrenome", "nome@email.com.br");
 
@@ -18,21 +18,21 @@ public class AutorTest {
     @Test(expected = IllegalArgumentException.class)
     public void nomeAutorNaoPodeSerVazio() {
 
-        Autor autor = new Autor("", "nome@email.com.br");
+        new Autor("", "nome@email.com.br");
 
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void emailAutorNaoPodeSerVazio() {
 
-        Autor autor = new Autor("nome", "");
+        new Autor("nome", "");
 
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void validaEmailAutor() {
+    public void emailAutorDeSerValidado() {
 
-        Autor autor = new Autor("nome", "nomeemail.com.br");
+        new Autor("nome", "nomeemail.com.br");
 
     }
 }
