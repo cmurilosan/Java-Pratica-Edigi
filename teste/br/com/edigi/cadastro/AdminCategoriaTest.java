@@ -1,6 +1,7 @@
 package br.com.edigi.cadastro;
 
 import br.com.edigi.modelo.Categoria;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,13 +9,21 @@ import static org.junit.Assert.assertTrue;
 
 public class AdminCategoriaTest {
 
-    AdminCategoria lista = new AdminCategoria();
+    private AdminCategoria lista;
+    private Categoria programacao;
+    private Categoria frontend;
+    private Categoria mobile;
+
+    @Before
+    public void criaCategoria() {
+        this.lista = new AdminCategoria();
+        this.programacao = new Categoria("Programação");
+        this.frontend = new Categoria("Front=End");
+        this.mobile = new Categoria("Programação");
+    }
 
     @Test
     public void categoriasDevemConstarNaLista() {
-
-        Categoria programacao = new Categoria("Programação");
-        Categoria frontend = new Categoria("Front-End");
 
         lista.insereCategoria(programacao);
         lista.insereCategoria(frontend);
@@ -27,11 +36,7 @@ public class AdminCategoriaTest {
     @Test(expected = RuntimeException.class)
     public void categoriasNaoPodemTerOMesmoNome() {
 
-        Categoria programação = new Categoria("Programação");
-        Categoria frontend = new Categoria("Front-End");
-        Categoria mobile = new Categoria("Programação");
-
-        lista.insereCategoria(programação);
+        lista.insereCategoria(programacao);
         lista.insereCategoria(frontend);
         lista.insereCategoria(mobile);
 
