@@ -1,13 +1,20 @@
 package br.com.edigi.modelo;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class LivroTest {
 
-    Autor cassio = new Autor("Cassio", "cassio@teste.com.br");
-    Categoria programacao = new Categoria("Programação");
+    private Autor cassio;
+    private Categoria programacao;
+
+    @Before
+    public void criaAutor() {
+        this.cassio = new Autor("Cassio", "cassio@teste.com.br");
+        this.programacao = new Categoria("Programação");
+    }
 
     @Test
     public void livroDeveConterTituloResumoSumarioNumeroDePaginasIsbnAutorCategoriaEdicaoEPreco() {
@@ -67,7 +74,7 @@ public class LivroTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void resumoDoLivroNaoDeveTerMaisDeQuinhentosCaracteres() {
+    public void resumoDoLivroNaoPodeTerMaisDeQuinhentosCaracteres() {
 
         Livro livro = new Livro(
                 "Java",
@@ -139,7 +146,7 @@ public class LivroTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void isbnDoLivroDeveComecarCom987() {
+    public void isbnDoLivroTeraQueComecarCom987() {
 
         Livro livro = new Livro(
                 "Java",
@@ -155,7 +162,7 @@ public class LivroTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void isbnDoLivroDeveBaterComFormatoPadrao() {
+    public void isbnDoLivroDeveTerFormatoPadrao() {
 
         Livro livro = new Livro(
                 "Java",
@@ -171,7 +178,7 @@ public class LivroTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void edicaoDoLivroDeveIniciarComUm() {
+    public void edicaoDoLivroNaoDeveSerMenorQueUm() {
 
         Livro livro = new Livro(
                 "Java",
@@ -187,7 +194,7 @@ public class LivroTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void precoDoLivroNaoDeveserMenorQueZero() {
+    public void precoDoLivroNaoDeveSerComNumerosNegativos() {
 
         Livro livro = new Livro(
                 "Java",
