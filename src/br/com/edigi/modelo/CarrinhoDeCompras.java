@@ -3,6 +3,7 @@ package br.com.edigi.modelo;
 import br.com.edigi.cadastro.AdminLivro;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,5 +54,9 @@ public class CarrinhoDeCompras {
                 .append(this.getValorTotal());
 
         System.out.println(builder.toString());
+    }
+
+    public Map<Livro, Integer> getLivros() {
+        return this.livros;
     }
 }
