@@ -9,14 +9,14 @@ import static org.junit.Assert.assertTrue;
 
 public class AdminAutoresTest {
 
-    private AdminAutores lista;
+    private AdminAutores listaDeAutores;
     private Autor cassio;
     private Autor murilo;
     private Autor santos;
 
     @Before
     public void criaAdminAutoresEAutor() {
-        this.lista = new AdminAutores();
+        this.listaDeAutores = new AdminAutores();
         this.cassio = new Autor("Cássio", "cassio@alura.com.br");
         this.murilo = new Autor("Murilo", "murilo@alura.com.br");
         this.santos = new Autor("Santos", "murilo@alura.com.br");
@@ -25,22 +25,19 @@ public class AdminAutoresTest {
     @Test
     public void autoresDevemConstarNaLista() {
 
-        lista.insereAutor(cassio);
-        lista.insereAutor(murilo);
+        listaDeAutores.insereAutor(cassio);
+        listaDeAutores.insereAutor(murilo);
 
-        assertEquals(2, lista.getListaDeAutores().size());
-        assertTrue("Cássio", lista.getListaDeAutores().contains(cassio));
-        assertTrue("cassio@alura.com.br", lista.getListaDeAutores().contains(cassio));
-        assertTrue("Murilo", lista.getListaDeAutores().contains(murilo));
-        assertTrue("murilo@alura.com.br", lista.getListaDeAutores().contains(murilo));
+        assertTrue(String.valueOf(cassio), listaDeAutores.getListaDeAutores().contains(cassio));
+        assertTrue(String.valueOf(murilo), listaDeAutores.getListaDeAutores().contains(murilo));
     }
 
     @Test(expected = RuntimeException.class)
     public void autoresNaoPodemTerOMesmoEmail() {
 
-        lista.insereAutor(cassio);
-        lista.insereAutor(murilo);
-        lista.insereAutor(santos);
+        listaDeAutores.insereAutor(cassio);
+        listaDeAutores.insereAutor(murilo);
+        listaDeAutores.insereAutor(santos);
 
     }
 
