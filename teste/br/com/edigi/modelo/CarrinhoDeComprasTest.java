@@ -40,16 +40,8 @@ public class CarrinhoDeComprasTest {
         adminLivro.insereLivro(java);
         carrinhoDeCompras.add(java);
 
-        assertEquals(1, carrinhoDeCompras.getLivros().size());
-        assertTrue("Java", carrinhoDeCompras.getLivros().containsKey(java));
-        assertTrue("Este livro aborda Orientação a Objetos", carrinhoDeCompras.getLivros().containsKey(java));
-        assertTrue("Sumário deve ser inserido", carrinhoDeCompras.getLivros().containsKey(java));
-        assertTrue(String.valueOf(300), carrinhoDeCompras.getLivros().containsKey(java));
-        assertTrue("978-12-34567-89-0", carrinhoDeCompras.getLivros().containsKey(java));
-        assertTrue(String.valueOf(cassio), carrinhoDeCompras.getLivros().containsKey(java));
-        assertTrue(String.valueOf(programacao), carrinhoDeCompras.getLivros().containsKey(java));
-        assertTrue(String.valueOf(1), carrinhoDeCompras.getLivros().containsKey(java));
-        assertTrue(String.valueOf(70.00), carrinhoDeCompras.getLivros().containsKey(java));
+        assertTrue(String.valueOf(java), carrinhoDeCompras.getLivros().containsKey(java));
+
     }
 
     @Test(expected = RuntimeException.class)
