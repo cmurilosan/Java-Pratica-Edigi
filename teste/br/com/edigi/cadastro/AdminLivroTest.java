@@ -10,14 +10,14 @@ import static org.junit.Assert.assertTrue;
 
 public class AdminLivroTest {
 
-    private AdminLivro lista;
+    private AdminLivro listaDeLivros;
     private Categoria programacao;
     private Autor cassio;
     private Autor murilo;
 
     @Before
     public void criaAdminLivroCategoriaEAutor() {
-        this.lista = new AdminLivro();
+        this.listaDeLivros = new AdminLivro();
         this.programacao = new Categoria("Programação");
         this.cassio = new Autor("Cássio", "cassio@teste.com.br");
         this.murilo = new Autor("Murilo", "murilo@teste.com.br");
@@ -37,17 +37,10 @@ public class AdminLivroTest {
                 1,
                 70.00);
 
-        lista.insereLivro(java);
+        listaDeLivros.insereLivro(java);
 
-        assertTrue("Java", lista.getListaDeLivros().contains(java));
-        assertTrue("Este livro aborda Orientação a Objetos", lista.getListaDeLivros().contains(java));
-        assertTrue("Sumário deve ser inserido", lista.getListaDeLivros().contains(java));
-        assertTrue(String.valueOf(300), lista.getListaDeLivros().contains(java));
-        assertTrue("978-12-34567-89-0", lista.getListaDeLivros().contains(java));
-        assertTrue(String.valueOf(cassio), lista.getListaDeLivros().contains(java));
-        assertTrue(String.valueOf(programacao), lista.getListaDeLivros().contains(java));
-        assertTrue(String.valueOf(1), lista.getListaDeLivros().contains(java));
-        assertTrue(String.valueOf(70.00), lista.getListaDeLivros().contains(java));
+        assertTrue(String.valueOf(java), listaDeLivros.getListaDeLivros().contains(java));
+
     }
 
     @Test(expected = RuntimeException.class)
@@ -74,8 +67,8 @@ public class AdminLivroTest {
                 1,
                 70.00);
 
-        lista.insereLivro(java);
-        lista.insereLivro(python);
+        listaDeLivros.insereLivro(java);
+        listaDeLivros.insereLivro(python);
 
     }
 
@@ -93,8 +86,8 @@ public class AdminLivroTest {
                 1,
                 70.00);
 
-        lista.insereLivro(java);
-        assertTrue("Java", lista.buscaPorTitulo("Ja").contains(java));
+        listaDeLivros.insereLivro(java);
+        assertTrue("Java", listaDeLivros.buscaPorTitulo("Ja").contains(java));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -111,8 +104,8 @@ public class AdminLivroTest {
                 1,
                 70.00);
 
-        lista.insereLivro(java);
-        lista.buscaPorTitulo("J");
+        listaDeLivros.insereLivro(java);
+        listaDeLivros.buscaPorTitulo("J");
     }
 
     @Test
@@ -129,9 +122,9 @@ public class AdminLivroTest {
                 1,
                 70.00);
 
-        lista.insereLivro(java);
-        assertTrue("Java", lista.buscaPorTitulo("ja").contains(java));
-        assertTrue("Java", lista.buscaPorTitulo("JA").contains(java));
+        listaDeLivros.insereLivro(java);
+        assertTrue("Java", listaDeLivros.buscaPorTitulo("ja").contains(java));
+        assertTrue("Java", listaDeLivros.buscaPorTitulo("JA").contains(java));
 
     }
 
