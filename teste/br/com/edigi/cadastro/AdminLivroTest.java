@@ -27,7 +27,7 @@ public class AdminLivroTest {
     public void livroDeveConstarNaLista() {
 
         Livro java = new Livro(
-                "Java",
+                "JSP e Hibernate",
                 "Este livro aborda Orientação a Objetos",
                 "Sumário deve ser inserido",
                 300,
@@ -72,6 +72,35 @@ public class AdminLivroTest {
 
     }
 
+    @Test(expected = RuntimeException.class)
+    public void livrosNaoPodemTerOMesmoTitulo() {
+
+        Livro java = new Livro(
+                "Java",
+                "Este livro aborda Orientação a Objetos",
+                "Sumário deve ser inserido",
+                300,
+                "978-12-34567-89-0",
+                cassio,
+                programacao,
+                1,
+                70.00);
+        Livro python = new Livro(
+                "Java",
+                "Este livro aborda a linguigem Python",
+                "Sumário deve ser inserido",
+                300,
+                "978-12-85214-89-0",
+                murilo,
+                programacao,
+                1,
+                70.00);
+
+        listaDeLivros.insereLivro(java);
+        listaDeLivros.insereLivro(python);
+
+    }
+
     @Test
     public void buscaPorTituloDeveTerNoMinimoDoisCaracteres() {
 
@@ -94,7 +123,7 @@ public class AdminLivroTest {
     public void buscaPorTituloNaoDeveTerMenosQueDoisCaracteres() {
 
         Livro java = new Livro(
-                "Java",
+                "Orientação a Objetos",
                 "Este livro aborda Orientação a Objetos",
                 "Sumário deve ser inserido",
                 300,
@@ -112,7 +141,7 @@ public class AdminLivroTest {
     public void buscaPorTituloPodeSerEmLetraMaiusculaOuMinuscula() {
 
         Livro java = new Livro(
-                "Java",
+                "Solid",
                 "Este livro aborda Orientação a Objetos",
                 "Sumário deve ser inserido",
                 300,
@@ -123,8 +152,8 @@ public class AdminLivroTest {
                 70.00);
 
         listaDeLivros.insereLivro(java);
-        assertTrue("Java", listaDeLivros.buscaPorTitulo("ja").contains(java));
-        assertTrue("Java", listaDeLivros.buscaPorTitulo("JA").contains(java));
+        assertTrue("Java", listaDeLivros.buscaPorTitulo("so").contains(java));
+        assertTrue("Java", listaDeLivros.buscaPorTitulo("SO").contains(java));
 
     }
 

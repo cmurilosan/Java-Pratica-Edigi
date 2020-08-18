@@ -13,7 +13,7 @@ public class AdminLivro {
 
     public void insereLivro(Livro livro) {
         if(AdminLivro.listaDeLivros.contains(livro)){
-            throw new RuntimeException("Já existe um livro cadastrado com esse ISBN");
+            throw new RuntimeException("Livro já cadastrado. Confirme o TÍTULO ou o ISBN");
         }
         AdminLivro.listaDeLivros.add(livro);
     }

@@ -79,18 +79,18 @@ public class TesteEdigi {
         cadastroDeLivros.insereLivro(react);
         cadastroDeLivros.insereLivro(android);
 
-//		System.out.println(CadastroAutores.getListaDeAutores());
+//		System.out.println(CadastroAutores.getListaDeAutores());        CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+////        carrinhoDeCompras.add(android);
+////        carrinhoDeCompras.add(android);
+////        carrinhoDeCompras.add(java);
+////
+////        carrinhoDeCompras.finalizaCompra();
 //		System.out.println(CadastroCategorias.getListaDeCategoria());
 
 //        List<Livro> livrosEncontrados = cadastroDeLivros.buscaPorTitulo("ja");
 //        System.out.println("Resultado da busca: " + livrosEncontrados);
 
-        CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
-        carrinhoDeCompras.add(android);
-        carrinhoDeCompras.add(android);
-        carrinhoDeCompras.add(java);
-
-        carrinhoDeCompras.finalizaCompra();
+//
 
     }
 
