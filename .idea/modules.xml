@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/e-digi.iml" filepath="$PROJECT_DIR$/e-digi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/edigi.iml" filepath="$PROJECT_DIR$/edigi.iml" />
     </modules>
   </component>
 </project>
