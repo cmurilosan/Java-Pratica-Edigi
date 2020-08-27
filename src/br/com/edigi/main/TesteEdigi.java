@@ -1,8 +1,9 @@
 package br.com.edigi.main;
 
-import br.com.edigi.cadastro.*;
+import br.com.edigi.cadastro.AdminAutores;
+import br.com.edigi.cadastro.AdminCategoria;
+import br.com.edigi.cadastro.AdminLivro;
 import br.com.edigi.modelo.Autor;
-import br.com.edigi.modelo.CarrinhoDeCompras;
 import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
 
@@ -69,7 +70,7 @@ public class TesteEdigi {
                 "Esta é a criação do Livro Android",
                 "Livro inserido na lista",
                 330,
-                "978-34-56789-01-2",
+                "978-23-74125-90-1",
                 santos,
                 mobile,
                 3,
