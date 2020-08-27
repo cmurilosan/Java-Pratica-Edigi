@@ -1,6 +1,5 @@
 package br.com.edigi.modelo;
 
-@Entity
 public class Autor {
 
     private String nome;

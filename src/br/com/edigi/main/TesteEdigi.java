@@ -70,7 +70,7 @@ public class TesteEdigi {
                 "Esta é a criação do Livro Android",
                 "Livro inserido na lista",
                 330,
-                "978-23-45678-90-1",
+                "978-23-74125-90-1",
                 santos,
                 mobile,
                 3,

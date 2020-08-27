@@ -27,27 +27,26 @@ public class CarrinhoDeComprasTest {
     @Test
     public void livroAdicionadoNoCarrinhoDeveConterNoCatalogo() {
 
-        Livro java = new Livro("Java",
+        Livro maven = new Livro("Maven",
                 "Este livro aborda Orientação a Objetos",
                 "Sumário deve ser inserido",
                 300,
-                "978-12-34567-78-0",
+                "978-12-65478-78-0",
                 cassio,
                 programacao,
                 1,
                 70.00);
 
-        adminLivro.insereLivro(java);
-        carrinhoDeCompras.add(java);
+        adminLivro.insereLivro(maven);
+        carrinhoDeCompras.add(maven);
 
-        assertTrue(String.valueOf(java), carrinhoDeCompras.getLivros().containsKey(java));
-
+        assertTrue(String.valueOf(maven), carrinhoDeCompras.getLivros().containsKey(maven));
     }
 
     @Test(expected = RuntimeException.class)
     public void livroNaoEhAdicionadoNoCarrinhoQuandoEstaForaDoCatalogo() {
 
-        Livro java = new Livro("Java",
+        Livro poo = new Livro("Orientação a Objetos",
                 "Este livro aborda Orientação a Objetos",
                 "Sumário deve ser inserido",
                 300,
@@ -57,23 +56,23 @@ public class CarrinhoDeComprasTest {
                 1,
                 70.00);
 
-        carrinhoDeCompras.add(java);
+        carrinhoDeCompras.add(poo);
     }
 
     @Test
     public void carrinhoDeComprasGeraOValorTotal() {
 
-        Livro java = new Livro("Java",
+        Livro web = new Livro("Web",
                 "Este livro aborda Orientação a Objetos",
                 "Sumário deve ser inserido",
                 300,
-                "978-12-87412-89-0",
+                "978-12-32145-89-0",
                 cassio,
                 programacao,
                 1,
                 70.00);
 
-        Livro python = new Livro("Python",
+        Livro solid = new Livro("Solid",
                 "Este livro aborda a linguagem Python",
                 "Sumário deve ser inserido",
                 300,
@@ -83,11 +82,11 @@ public class CarrinhoDeComprasTest {
                 1,
                 70.00);
 
-        adminLivro.insereLivro(java);
-        adminLivro.insereLivro(python);
+        adminLivro.insereLivro(web);
+        adminLivro.insereLivro(solid);
 
-        carrinhoDeCompras.add(java);    // 70.00
-        carrinhoDeCompras.add(python);  // 70.00
+        carrinhoDeCompras.add(web);    // 70.00
+        carrinhoDeCompras.add(solid);  // 70.00
 
         assertEquals(140.00,carrinhoDeCompras.getValorTotal(), 0.00001);
     }
@@ -95,7 +94,7 @@ public class CarrinhoDeComprasTest {
     @Test
     public void carrinhoDeComprarDeveFinalizarACompra() {
 
-        Livro java = new Livro("Java",
+        Livro jsp = new Livro("JSP",
                 "Este livro aborda Orientação a Objetos",
                 "Sumário deve ser inserido",
                 300,
@@ -105,7 +104,7 @@ public class CarrinhoDeComprasTest {
                 1,
                 70.00);
 
-        Livro python = new Livro("Python",
+        Livro servlet = new Livro("Servlet",
                 "Este livro aborda a linguagem Python",
                 "Sumário deve ser inserido",
                 300,
@@ -115,11 +114,11 @@ public class CarrinhoDeComprasTest {
                 1,
                 70.00);
 
-        adminLivro.insereLivro(java);
-        adminLivro.insereLivro(python);
+        adminLivro.insereLivro(jsp);
+        adminLivro.insereLivro(servlet);
 
-        carrinhoDeCompras.add(java);    // 70.00
-        carrinhoDeCompras.add(python);  // 70.00
+        carrinhoDeCompras.add(jsp);    // 70.00
+        carrinhoDeCompras.add(servlet);  // 70.00
 
         carrinhoDeCompras.finalizaCompra();
 

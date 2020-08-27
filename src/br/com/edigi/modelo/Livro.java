@@ -133,7 +133,7 @@ public class Livro {
     @Override
     public boolean equals(Object obj) {
         Livro outroLivro = (Livro) obj;
-        return this.isbn.equals(outroLivro.isbn) &&
+        return this.isbn.equals(outroLivro.isbn) ||
                 this.titulo.equals(outroLivro.titulo);
     }
 
