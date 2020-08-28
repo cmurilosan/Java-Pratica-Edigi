@@ -1,5 +1,8 @@
 package br.com.edigi.modelo;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Autor {
 
     private String nome;
