@@ -1,11 +1,16 @@
 package br.com.edigi.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Autor {
 
+    @Column
     private String nome;
+
+    @Id
     private String email;
 
     public Autor(String nome,

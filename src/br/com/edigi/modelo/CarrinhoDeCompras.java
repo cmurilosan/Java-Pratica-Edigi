@@ -2,13 +2,19 @@ package br.com.edigi.modelo;
 
 import br.com.edigi.cadastro.AdminLivro;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+@Entity
 public class CarrinhoDeCompras {
 
+    @Column
     private LocalDateTime dataVenda;
+    @Id
     private AdminLivro adminLivro = new AdminLivro();
 
     private Map<Livro, Integer> livros = new HashMap<>();

@@ -1,7 +1,14 @@
 package br.com.edigi.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Categoria {
 
+    @Id
+    @Column
     private String nome;
 
     public Categoria(String nome) {
