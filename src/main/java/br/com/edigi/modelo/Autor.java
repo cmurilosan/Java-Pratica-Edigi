@@ -1,22 +1,26 @@
 package br.com.edigi.modelo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Autor {
 
-    @Column
-    private String nome;
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nome;
+    @Column(unique = true)
     private String email;
 
     public Autor(String nome,
                  String email) {
         setNome(nome);
         setEmail(email);
+    }
+
+    @Deprecated
+    private Autor() {
     }
 
     private void setNome(String nome) {

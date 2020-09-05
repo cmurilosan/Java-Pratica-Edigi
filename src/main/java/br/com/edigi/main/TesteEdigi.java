@@ -1,6 +1,6 @@
 package br.com.edigi.main;
 
-import br.com.edigi.cadastro.AdminAutores;
+import br.com.edigi.cadastro.AutorDao;
 import br.com.edigi.cadastro.AdminCategoria;
 import br.com.edigi.cadastro.AdminLivro;
 import br.com.edigi.modelo.Autor;
@@ -11,7 +11,7 @@ public class TesteEdigi {
 
     public static void main(String[] args) {
 
-        AdminAutores listaDeAutores = new AdminAutores();
+        AutorDao listaDeAutores = new AutorDao();
 
         Autor cassio = new Autor("Cassio", "cassio.java@primeiroautor.com.br");
         Autor murilo = new Autor("Murilo", "murilo.logica@segundoautor.com.br");

@@ -6,16 +6,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class AdminAutoresTest {
+public class AutorDaoTest {
 
-    private AdminAutores listaDeAutores;
+    private AutorDao listaDeAutores;
     private Autor cassio;
     private Autor murilo;
     private Autor santos;
 
     @Before
     public void criaAdminAutoresEAutor() {
-        this.listaDeAutores = new AdminAutores();
+        this.listaDeAutores = new AutorDao();
         this.cassio = new Autor("Cássio", "cassio@alura.com.br");
         this.murilo = new Autor("Murilo", "murilo@alura.com.br");
         this.santos = new Autor("Santos", "murilo@alura.com.br");
