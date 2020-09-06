@@ -8,8 +8,8 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
+    
     @Column(unique = true)
     private String email;
 
@@ -40,6 +40,14 @@ public class Autor {
         this.email = email;
     }
 
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
     @Override
     public boolean equals(Object obj) {
         Autor outroAutor = (Autor) obj;
@@ -53,11 +61,4 @@ public class Autor {
                 "\nEmail: " + this.email;
     }
 
-    public String getNome() {
-        return this.nome;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
 }

@@ -1,8 +1,8 @@
 package br.com.edigi.main;
 
+import br.com.edigi.cadastro.CategoriaDao;
 import br.com.edigi.cadastro.AutorDao;
-import br.com.edigi.cadastro.AdminCategoria;
-import br.com.edigi.cadastro.AdminLivro;
+import br.com.edigi.cadastro.LivroDao;
 import br.com.edigi.modelo.Autor;
 import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
@@ -16,24 +16,24 @@ public class TesteEdigi {
         Autor cassio = new Autor("Cassio", "cassio.java@primeiroautor.com.br");
         Autor murilo = new Autor("Murilo", "murilo.logica@segundoautor.com.br");
         Autor santos = new Autor("Santos", "santos.forum@terceiroautor.com.br");
-        Autor kakashi = new Autor("Kakashi", "kakashi.forum@quartoautor.com.br");
+//        Autor outroAtor = new Autor("Cassio", "cassio.java@primeiroautor.com.br");
 
         listaDeAutores.insereAutor(cassio);
         listaDeAutores.insereAutor(murilo);
         listaDeAutores.insereAutor(santos);
-        listaDeAutores.insereAutor(kakashi);
+//        listaDeAutores.insereAutor(outroAtor);
 
-        AdminCategoria listaDeCategoria = new AdminCategoria();
-
+        CategoriaDao listaDeCategoria = new CategoriaDao();
+//
         Categoria programacao = new Categoria("Programação");
         Categoria frontend = new Categoria("FrontEnd");
         Categoria mobile = new Categoria("Mobile");
-
+//
         listaDeCategoria.insereCategoria(programacao);
         listaDeCategoria.insereCategoria(frontend);
         listaDeCategoria.insereCategoria(mobile);
-
-        AdminLivro cadastroDeLivros = new AdminLivro();
+//
+        LivroDao cadastroDeLivros = new LivroDao();
 
         Livro java = new Livro(
                 "Java",
@@ -45,16 +45,6 @@ public class TesteEdigi {
                 programacao,
                 1,
                 30.00);
-        Livro javascript = new Livro(
-                "Javascript",
-                "Esta é a criação do Livro Javascript",
-                "Livro inserido na lista",
-                280,
-                "978-85-23698-74-1",
-                kakashi,
-                frontend,
-                1,
-                33.00);
         Livro react = new Livro(
                 "React",
                 "Esta é a criação do Livro React",

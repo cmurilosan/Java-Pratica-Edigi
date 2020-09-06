@@ -29,7 +29,9 @@ public class Categoria {
         this.nome = nome;
     }
 
-
+    public String getNome() {
+        return this.nome;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -44,7 +46,4 @@ public class Categoria {
                 "\n";
     }
 
-    public String getNome() {
-        return this.nome;
-    }
 }

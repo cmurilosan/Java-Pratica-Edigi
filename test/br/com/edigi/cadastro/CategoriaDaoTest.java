@@ -6,16 +6,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class AdminCategoriaTest {
+public class CategoriaDaoTest {
 
-    private AdminCategoria listaDeCategoria;
+    private CategoriaDao listaDeCategoria;
     private Categoria programacao;
     private Categoria frontend;
     private Categoria mobile;
 
     @Before
     public void criaCategoria() {
-        this.listaDeCategoria = new AdminCategoria();
+        this.listaDeCategoria = new CategoriaDao();
         this.programacao = new Categoria("Programação");
         this.frontend = new Categoria("Front=End");
         this.mobile = new Categoria("Programação");

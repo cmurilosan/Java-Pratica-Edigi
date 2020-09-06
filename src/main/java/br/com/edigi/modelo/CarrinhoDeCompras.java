@@ -1,6 +1,6 @@
 package br.com.edigi.modelo;
 
-import br.com.edigi.cadastro.AdminLivro;
+import br.com.edigi.cadastro.LivroDao;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -9,12 +9,12 @@ import java.util.Map;
 public class CarrinhoDeCompras {
 
     private LocalDateTime dataVenda;
-    private AdminLivro adminLivro = new AdminLivro();
+    private LivroDao livroDao = new LivroDao();
 
     private Map<Livro, Integer> livros = new HashMap<>();
 
     public void add(Livro livro) {
-        if (!adminLivro.contem(livro)) {
+        if (!livroDao.contem(livro)) {
             throw new RuntimeException("Os livros adicionados a venda precisam existir no catálogo de livros.");
             //Erro de tempo de execução
         }

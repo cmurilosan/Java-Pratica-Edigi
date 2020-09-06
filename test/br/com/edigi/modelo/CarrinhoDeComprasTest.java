@@ -1,6 +1,6 @@
 package br.com.edigi.modelo;
 
-import br.com.edigi.cadastro.AdminLivro;
+import br.com.edigi.cadastro.LivroDao;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 public class CarrinhoDeComprasTest {
 
     private CarrinhoDeCompras carrinhoDeCompras;
-    private AdminLivro adminLivro;
+    private LivroDao livroDao;
     private Categoria programacao;
     private Autor cassio;
     private Autor murilo;
@@ -18,7 +18,7 @@ public class CarrinhoDeComprasTest {
     @Before
     public void criaCarrinhoDeComprasAutoresECategoria() {
         this.carrinhoDeCompras = new CarrinhoDeCompras();
-        this.adminLivro = new AdminLivro();
+        this.livroDao = new LivroDao();
         this.cassio = new Autor("Cássio", "cassio@teste.com.br");
         this.murilo = new Autor("Murilo", "murilo@teste.com.br");
         this.programacao = new Categoria("Programação");
@@ -37,7 +37,7 @@ public class CarrinhoDeComprasTest {
                 1,
                 70.00);
 
-        adminLivro.insereLivro(maven);
+        livroDao.insereLivro(maven);
         carrinhoDeCompras.add(maven);
 
         assertTrue(String.valueOf(maven), carrinhoDeCompras.getLivros().containsKey(maven));
@@ -82,8 +82,8 @@ public class CarrinhoDeComprasTest {
                 1,
                 70.00);
 
-        adminLivro.insereLivro(web);
-        adminLivro.insereLivro(solid);
+        livroDao.insereLivro(web);
+        livroDao.insereLivro(solid);
 
         carrinhoDeCompras.add(web);    // 70.00
         carrinhoDeCompras.add(solid);  // 70.00
@@ -114,8 +114,8 @@ public class CarrinhoDeComprasTest {
                 1,
                 70.00);
 
-        adminLivro.insereLivro(jsp);
-        adminLivro.insereLivro(servlet);
+        livroDao.insereLivro(jsp);
+        livroDao.insereLivro(servlet);
 
         carrinhoDeCompras.add(jsp);    // 70.00
         carrinhoDeCompras.add(servlet);  // 70.00

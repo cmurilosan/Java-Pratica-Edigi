@@ -1,28 +1,26 @@
 package br.com.edigi.cadastro;
 
-import br.com.edigi.modelo.Autor;
+import br.com.edigi.modelo.Categoria;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class AutorDao {
+public class CategoriaDao {
 
     private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("edigi");
 
-    public List<Autor> getListaDeAutores() {
+    public List<Categoria> getListaDeCategoria(){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.createQuery("select a from Autor a", Autor.class).getResultList();
+        return entityManager.createQuery("select c from Categoria c", Categoria.class).getResultList();
     }
 
-    public void insereAutor(Autor autor) {
+    public void insereCategoria(Categoria categoria){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(autor);
+        entityManager.persist(categoria);
         entityManager.getTransaction().commit();
         entityManager.close();
-
     }
-
 }

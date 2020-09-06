@@ -8,16 +8,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class AdminLivroTest {
+public class LivroDaoTest {
 
-    private AdminLivro listaDeLivros;
+    private LivroDao listaDeLivros;
     private Categoria programacao;
     private Autor cassio;
     private Autor murilo;
 
     @Before
     public void criaAdminLivroCategoriaEAutor() {
-        this.listaDeLivros = new AdminLivro();
+        this.listaDeLivros = new LivroDao();
         this.programacao = new Categoria("Programação");
         this.cassio = new Autor("Cássio", "cassio@teste.com.br");
         this.murilo = new Autor("Murilo", "murilo@teste.com.br");

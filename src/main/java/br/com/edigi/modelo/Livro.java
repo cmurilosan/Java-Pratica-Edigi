@@ -1,9 +1,6 @@
 package br.com.edigi.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Livro {
@@ -11,12 +8,20 @@ public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String titulo;
     private String resumo;
     private String sumario;
     private int numeroPaginas;
+
+    @Column(unique = true)
     private String isbn;
+
+    @ManyToOne
     private Autor autor;
+
+    @OneToOne
     private Categoria categoria;
     private int edicao;
     private double preco;
