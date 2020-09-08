@@ -2,40 +2,44 @@ package br.com.edigi.cadastro;
 
 import br.com.edigi.modelo.Livro;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LivroDao {
 
-    private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("edigi");
+    private static List<Livro> listaDeLivros = new ArrayList<>();
 
     public void insereLivro(Livro livro) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.persist(livro);
-        entityManager.getTransaction().commit();
-        entityManager.close();
+        if(LivroDao.listaDeLivros.contains(livro)){
+            throw new RuntimeException("Livro já cadastrado. Confirme o TÍTULO ou o ISBN");
+        }
+        LivroDao.listaDeLivros.add(livro);
     }
 
     public List<Livro> buscaPorTitulo(String palavra) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
         if (palavra.length() < 2){
-                throw new IllegalArgumentException(palavra + " é insuficiente para a pesquisa");
-            }
+            throw new IllegalArgumentException(palavra + " é insuficiente para a pesquisa");
+        }
 
-        return entityManager.createQuery("select l from Livro l", Livro.class).getResultList();
+        return listaDeLivros.stream().filter(livro -> contemNoTitulo(palavra, livro))
+                .collect(Collectors.toList());
 
+    }
+
+    private boolean contemNoTitulo(String palavra, Livro livro) {
+        String tituloMaiusculo = livro.getTitulo().toUpperCase();
+        String palavraMaiusculo = palavra.toUpperCase();
+
+        return tituloMaiusculo.contains(palavraMaiusculo);
     }
 
     public boolean contem(Livro livro) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.createQuery("select l from Livro l", Livro.class).equals(livro);
+        return listaDeLivros.contains(livro);
     }
 
     public List<Livro> getListaDeLivros() {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.createQuery("select l from Livro l", Livro.class).getResultList();
+        return Collections.unmodifiableList(listaDeLivros);
     }
 }

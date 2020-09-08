@@ -2,27 +2,23 @@ package br.com.edigi.cadastro;
 
 import br.com.edigi.modelo.Autor;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AutorDao {
 
-    private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("edigi");
+    private static List<Autor> listaDeAutores = new ArrayList<>();
 
     public List<Autor> getListaDeAutores() {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return entityManager.createQuery("select a from Autor a", Autor.class).getResultList();
+        return Collections.unmodifiableList(listaDeAutores);
     }
 
     public void insereAutor(Autor autor) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.persist(autor);
-        entityManager.getTransaction().commit();
-        entityManager.close();
-
+        if(AutorDao.listaDeAutores.contains(autor)) {
+            throw new RuntimeException("Já existe um AUTOR cadastrado em nosso sistema com esse EMAIL");
+        }
+        AutorDao.listaDeAutores.add(autor);
     }
 
 }

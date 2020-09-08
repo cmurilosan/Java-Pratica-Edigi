@@ -2,26 +2,14 @@ package br.com.edigi.modelo;
 
 import javax.persistence.*;
 
-@Entity
 public class Livro {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(unique = true)
     private String titulo;
     private String resumo;
     private String sumario;
     private int numeroPaginas;
-
-    @Column(unique = true)
     private String isbn;
-
-    @ManyToOne
     private Autor autor;
-
-    @OneToOne
     private Categoria categoria;
     private int edicao;
     private double preco;
@@ -44,10 +32,6 @@ public class Livro {
         this.categoria = categoria;
         setEdicao(edicao);
         setPreco(preco);
-    }
-
-    @Deprecated
-    private Livro() {
     }
 
     public String getTitulo() {
