@@ -2,6 +2,7 @@ package br.com.edigi.modelo;
 
 public class Categoria {
 
+    private Long id;
     private String nome;
 
     public Categoria(String nome) {

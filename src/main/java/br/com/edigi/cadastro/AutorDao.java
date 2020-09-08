@@ -2,11 +2,18 @@ package br.com.edigi.cadastro;
 
 import br.com.edigi.modelo.Autor;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class AutorDao {
+
+    private Connection connection;
+
+    public AutorDao(Connection connection) {
+        this.connection = connection;
+    }
 
     private static List<Autor> listaDeAutores = new ArrayList<>();
 

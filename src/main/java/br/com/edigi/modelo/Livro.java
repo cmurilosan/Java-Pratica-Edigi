@@ -1,9 +1,8 @@
 package br.com.edigi.modelo;
 
-import javax.persistence.*;
-
 public class Livro {
 
+    private Long id;
     private String titulo;
     private String resumo;
     private String sumario;
