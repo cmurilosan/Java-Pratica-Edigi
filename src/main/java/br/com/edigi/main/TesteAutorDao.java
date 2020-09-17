@@ -2,10 +2,7 @@ package br.com.edigi.main;
 
 import br.com.edigi.cadastro.ConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class TesteAutorDao {
 
@@ -14,8 +11,8 @@ public class TesteAutorDao {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = connectionFactory.recuperarConexao();
 
-        Statement stm = connection.createStatement();
-        stm.execute("select id, nome, email from Autor");
+        PreparedStatement stm = connection.prepareStatement("select id, nome, email from Autor");
+        stm.execute();
         ResultSet rst = stm.getResultSet();
         while (rst.next()) {
             Integer id = rst.getInt("id");

@@ -3,8 +3,8 @@ package br.com.edigi.main;
 import br.com.edigi.cadastro.ConnectionFactory;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class TesteDelete {
 
@@ -13,8 +13,9 @@ public class TesteDelete {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = connectionFactory.recuperarConexao();
 
-        Statement statement = connection.createStatement();
-        statement.execute("delete from Autor where id > 2");
+        PreparedStatement statement = connection.prepareStatement("delete from Autor where id > ?");
+        statement.setInt(1, 2);
+        statement.execute();
 
         Integer linhasExcluidas = statement.getUpdateCount();
 

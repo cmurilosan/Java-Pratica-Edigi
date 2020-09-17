@@ -13,13 +13,18 @@ public class TesteInsercaoComParametros {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = connectionFactory.recuperarConexao();
 
-        PreparedStatement statement = connection.prepareStatement("insert into Autor(nome, email) values(?, ?)",
-                Statement.RETURN_GENERATED_KEYS);
+        ResultSet rst;
+        try (PreparedStatement statement = connection.prepareStatement("insert into Autor(nome, email) values(?, ?)",
+                Statement.RETURN_GENERATED_KEYS)) {
 
-        statement.setString(1, santos.getNome());
-        statement.setString(2, santos.getEmail());
-        statement.execute();
-        ResultSet rst = statement.getGeneratedKeys();
+            statement.setString(1, santos.getNome());
+            statement.setString(2, santos.getEmail());
+            statement.execute();
+            rst = statement.getGeneratedKeys();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Email já cadastrado");
+        }
         while (rst.next()) {
             Integer id = rst.getInt(1);
             System.out.println("O ID criado foi: " + id);
