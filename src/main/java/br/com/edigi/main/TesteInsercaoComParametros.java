@@ -8,27 +8,25 @@ import java.sql.*;
 public class TesteInsercaoComParametros {
 
     public static void main(String[] args) throws SQLException {
-        Autor santos = new Autor("Santos Cassio", "murilo@emmail.com.br");
 
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = connectionFactory.recuperarConexao();
 
-        ResultSet rst;
-        try (PreparedStatement statement = connection.prepareStatement("insert into Autor(nome, email) values(?, ?)",
-                Statement.RETURN_GENERATED_KEYS)) {
+        PreparedStatement statement = connection.prepareStatement("insert into Autor(nome, email) values(?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
 
-            statement.setString(1, santos.getNome());
-            statement.setString(2, santos.getEmail());
-            statement.execute();
-            rst = statement.getGeneratedKeys();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new IllegalArgumentException("Email já cadastrado");
-        }
+        adicionaAutor(new Autor("Santos Cassio", "murilo@email.com.br"), statement);
+    }
+
+    private static void adicionaAutor(Autor autor, PreparedStatement statement) throws SQLException {
+        statement.setString(1, autor.getNome());
+        statement.setString(2, autor.getEmail());
+        statement.execute();
+        ResultSet rst = statement.getGeneratedKeys();
         while (rst.next()) {
             Integer id = rst.getInt(1);
             System.out.println("O ID criado foi: " + id);
         }
-
+        rst.close();
     }
 }
