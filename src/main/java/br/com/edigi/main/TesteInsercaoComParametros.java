@@ -10,7 +10,7 @@ public class TesteInsercaoComParametros {
     public static void main(String[] args) throws SQLException {
 
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        try(Connection connection = connectionFactory.recuperarConexao()) {
+        try(Connection connection = connectionFactory.getConnection()) {
 
             connection.setAutoCommit(false);
 
@@ -34,10 +34,6 @@ public class TesteInsercaoComParametros {
     private static void adicionaAutor(Autor autor, PreparedStatement statement) throws SQLException {
         statement.setString(1, autor.getNome());
         statement.setString(2, autor.getEmail());
-        if (autor.getEmail().contains(statement.getResultSet().getString(autor.getEmail()))) {
-            throw new RuntimeException("Não foi possível adicional Autor");
-
-        }
         statement.execute();
         try(ResultSet rst = statement.getGeneratedKeys()) {
             while (rst.next()) {

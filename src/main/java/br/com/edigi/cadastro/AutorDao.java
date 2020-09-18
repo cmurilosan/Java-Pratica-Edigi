@@ -3,36 +3,31 @@ package br.com.edigi.cadastro;
 import br.com.edigi.modelo.Autor;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class AutorDao {
 
     private Connection connection;
 
-    public AutorDao(Connection connection) throws SQLException {
-        this.connection = connection;
+    public AutorDao() throws SQLException {
+        this.connection = new ConnectionFactory().getConnection();
     }
 
-    Statement stm = connection.createStatement();
-    ResultSet rst = stm.getResultSet();
+    public void adiciona(Autor autor) {
+        String sql = "insert into Autor" + "(nome, email)" + "values(?, ?)";
 
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
 
-    private static List<Autor> listaDeAutores = new ArrayList<>();
+            statement.setString(1, autor.getNome());
+            statement.setString(2, autor.getEmail());
 
-    public List<Autor> getListaDeAutores() {
-        return Collections.unmodifiableList(listaDeAutores);
-    }
-
-    public void insereAutor(Autor autor) {
-        if(AutorDao.listaDeAutores.contains(autor)) {
-            throw new RuntimeException("Já existe um AUTOR cadastrado em nosso sistema com esse EMAIL");
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException("Já temos um Autor cadastrado com este EMAIL!!!");
         }
-        AutorDao.listaDeAutores.add(autor);
     }
 
 }

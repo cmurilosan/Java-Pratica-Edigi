@@ -6,9 +6,13 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    public Connection recuperarConexao() throws SQLException {
-        return DriverManager.getConnection
-                ("jdbc:mysql://localhost/edigi?useTimezone=true&serverTimezone=UTC",
-                        "root", "groove10");
+    public Connection getConnection() {
+        try {
+            return DriverManager.getConnection
+                    ("jdbc:mysql://localhost/edigi?useTimezone=true&serverTimezone=UTC",
+                            "root", "groove10");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

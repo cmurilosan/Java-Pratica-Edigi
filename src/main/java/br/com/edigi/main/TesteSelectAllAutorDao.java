@@ -4,12 +4,12 @@ import br.com.edigi.cadastro.ConnectionFactory;
 
 import java.sql.*;
 
-public class TesteAutorDao {
+public class TesteSelectAllAutorDao {
 
     public static void main(String[] args) throws SQLException {
 
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        Connection connection = connectionFactory.recuperarConexao();
+        Connection connection = connectionFactory.getConnection();
 
         PreparedStatement stm = connection.prepareStatement("select id, nome, email from Autor");
         stm.execute();
