@@ -10,23 +10,40 @@ public class TesteInsercaoComParametros {
     public static void main(String[] args) throws SQLException {
 
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        Connection connection = connectionFactory.recuperarConexao();
+        try(Connection connection = connectionFactory.recuperarConexao()) {
 
-        PreparedStatement statement = connection.prepareStatement("insert into Autor(nome, email) values(?, ?)",
-                Statement.RETURN_GENERATED_KEYS);
+            connection.setAutoCommit(false);
 
-        adicionaAutor(new Autor("Santos Cassio", "murilo@email.com.br"), statement);
+            try (PreparedStatement statement =
+                         connection.prepareStatement("insert into Autor(nome, email) values(?, ?)",
+                                 Statement.RETURN_GENERATED_KEYS);
+            ) {
+
+                adicionaAutor(new Autor("Santos Cassio", "murilo@email.com.br"), statement);
+
+                connection.commit();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Email já cadastrado!!!");
+                connection.rollback();
+            }
+        }
+
     }
-
     private static void adicionaAutor(Autor autor, PreparedStatement statement) throws SQLException {
         statement.setString(1, autor.getNome());
         statement.setString(2, autor.getEmail());
-        statement.execute();
-        ResultSet rst = statement.getGeneratedKeys();
-        while (rst.next()) {
-            Integer id = rst.getInt(1);
-            System.out.println("O ID criado foi: " + id);
+        if (autor.getEmail().contains(statement.getResultSet().getString(autor.getEmail()))) {
+            throw new RuntimeException("Não foi possível adicional Autor");
+
         }
-        rst.close();
+        statement.execute();
+        try(ResultSet rst = statement.getGeneratedKeys()) {
+            while (rst.next()) {
+                Integer id = rst.getInt(1);
+                System.out.println("O ID criado foi: " + id);
+            }
+        }
     }
 }
