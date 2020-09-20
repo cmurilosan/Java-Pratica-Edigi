@@ -2,22 +2,29 @@ package br.com.edigi.cadastro;
 
 import br.com.edigi.modelo.Categoria;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class CategoriaDao {
 
-    private static List<Categoria> listaDeCategoria = new ArrayList<>();
+    ConnectionFactory connectionFactory = new ConnectionFactory();
+    Connection connection = connectionFactory.getConnection();
 
-    public List<Categoria> getListaDeCategoria(){
-        return Collections.unmodifiableList(listaDeCategoria);
-    }
+    public void adiciona(Categoria categoria) throws SQLException {
 
-    public void insereCategoria(Categoria categoria){
-        if(CategoriaDao.listaDeCategoria.contains(categoria)){
-            throw new RuntimeException("Já possuímos essa CATEGORIA em nosso cadastro");
+        String sql = "insert into Categoria" + "(nome)" + "values(?)";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1,categoria.getNome());
+
+            statement.execute();
+            statement.close();
+        } catch ( SQLException e) {
+            System.out.println("Já possuímos essa CATEGORIA em nosso cadastro");
+            throw e;
         }
-        CategoriaDao.listaDeCategoria.add(categoria);
     }
 }

@@ -11,7 +11,7 @@ public class Categoria {
     }
 
     private void setNome(String nome) {
-        if(nome.isEmpty()) {
+        if(nome.isEmpty() || nome.isBlank()) {
             throw new IllegalArgumentException("Nome deve ser obrigatório!");
         }
         this.nome = nome;
