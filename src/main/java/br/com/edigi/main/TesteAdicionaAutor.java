@@ -9,7 +9,7 @@ public class TesteAdicionaAutor {
 
     public static void main(String[] args) throws SQLException {
 
-        Autor cassioSantos = new Autor("Cassio Santos", "cassio.santos@email.com");
+        Autor cassioSantos = new Autor("kakashi Sensei", "kakashi.sensei@email.com");
 
         AutorDao dao = new AutorDao();
 

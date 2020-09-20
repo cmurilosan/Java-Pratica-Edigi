@@ -8,13 +8,10 @@ import java.sql.SQLException;
 
 public class AutorDao {
 
-    private Connection connection;
+    ConnectionFactory connectionFactory = new ConnectionFactory();
+    Connection connection = connectionFactory.getConnection();
 
-    public AutorDao() throws SQLException {
-        this.connection = new ConnectionFactory().getConnection();
-    }
-
-    public void adiciona(Autor autor) {
+    public void adiciona(Autor autor) throws SQLException {
         String sql = "insert into Autor" + "(nome, email)" + "values(?, ?)";
 
         try {
@@ -26,8 +23,8 @@ public class AutorDao {
             statement.execute();
             statement.close();
         } catch (SQLException e) {
-            throw new RuntimeException("Já temos um Autor cadastrado com este EMAIL!!!");
+            System.out.println("Já temos um Autor cadastrado com este EMAIL!!!");
+            throw e;
         }
     }
-
 }
