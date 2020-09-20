@@ -13,8 +13,10 @@ public class TesteAdicionaCategoria {
 
         CategoriaDao dao = new CategoriaDao();
 
-        dao.adiciona(programação);
+//        dao.adiciona(programação);
+//
+//        System.out.println("Gravado com sucesso!");
 
-        System.out.println("Gravado com sucesso!");
+        dao.getLista();
     }
 }
