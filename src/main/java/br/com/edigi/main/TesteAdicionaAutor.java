@@ -13,9 +13,11 @@ public class TesteAdicionaAutor {
 
         AutorDao dao = new AutorDao();
 
-        dao.adiciona(cassioSantos);
+//        dao.adiciona(cassioSantos);
+//
+//        System.out.println("Gravado!");
 
-        System.out.println("Gravado!");
+        dao.getLista();
 
     }
 
