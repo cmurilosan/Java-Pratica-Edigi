@@ -8,8 +8,6 @@ public class Livro {
     private String sumario;
     private int numeroPaginas;
     private String isbn;
-    private Autor autor;
-    private Categoria categoria;
     private int edicao;
     private double preco;
 
@@ -18,8 +16,6 @@ public class Livro {
                  String sumario,
                  int numeroPaginas,
                  String isbn,
-                 Autor autor,
-                 Categoria categoria,
                  int edicao,
                  double preco) {
         setTitulo(titulo);
@@ -27,8 +23,6 @@ public class Livro {
         setSumario(sumario);
         setNumeroPaginas(numeroPaginas);
         setIsbn(isbn);
-        this.autor = autor;
-        this.categoria = categoria;
         setEdicao(edicao);
         setPreco(preco);
     }
@@ -39,7 +33,7 @@ public class Livro {
     }
 
     private void setTitulo(String titulo) {
-        if(titulo.isEmpty()){
+        if(titulo.isEmpty() || titulo.isBlank()){
             throw new IllegalArgumentException("Campo TÍTULO deve ser preenchido");
         }
         this.titulo = titulo;
@@ -51,7 +45,7 @@ public class Livro {
     }
 
     private void setResumo(String resumo) {
-        if(resumo.isEmpty()){
+        if(resumo.isEmpty() || resumo.isBlank()){
             throw new IllegalArgumentException("Campo DESCRIÇÃO deve ser preenchido");
         }
         if(resumo.length() > 500){
@@ -65,7 +59,7 @@ public class Livro {
     }
 
     private void setSumario(String sumario) {
-        if(sumario.isEmpty()){
+        if(sumario.isEmpty() || sumario.isBlank()){
             throw new IllegalArgumentException("Sumário deve ser preenchido");
         }
         this.sumario = sumario;
@@ -88,7 +82,7 @@ public class Livro {
     }
 
     private void setIsbn(String isbn) {
-        if(isbn.isEmpty()){
+        if(isbn.isEmpty() || isbn.isBlank()){
             throw new IllegalArgumentException("ISBN deve ser preenchido");
         }
         if(!isbn.startsWith("978")){
@@ -98,14 +92,6 @@ public class Livro {
             throw new IllegalArgumentException("ISBN segue a seguinte regra: xxx-xx-xxxxx-xx-x ");
         }
         this.isbn = isbn;
-    }
-
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
     }
 
     public int getEdicao() {
@@ -147,8 +133,6 @@ public class Livro {
                 "\nNumero de Paginas = " + numeroPaginas +
                 "\nEdicao = " + edicao +
                 "\nPreco = R$ " + preco +
-                "\nISBN = " + isbn +
-                "\nAutor = " + autor +
-                "\nCategoria = " + categoria;
+                "\nISBN = " + isbn;
     }
 }
