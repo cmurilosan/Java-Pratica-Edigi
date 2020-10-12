@@ -4,6 +4,8 @@ public class Livro {
 
     private Long id;
     private String titulo;
+    private Autor autor;
+    private Categoria categoria;
     private String resumo;
     private String sumario;
     private int numeroPaginas;
@@ -12,6 +14,8 @@ public class Livro {
     private double preco;
 
     public Livro(String titulo,
+                 Autor autor,
+                 Categoria categoria,
                  String resumo,
                  String sumario,
                  int numeroPaginas,
@@ -19,6 +23,8 @@ public class Livro {
                  int edicao,
                  double preco) {
         setTitulo(titulo);
+        this.autor = autor;
+        this.categoria = categoria;
         setResumo(resumo);
         setSumario(sumario);
         setNumeroPaginas(numeroPaginas);
@@ -128,6 +134,8 @@ public class Livro {
     public String toString() {
         return "\n================== Livro ==================" +
                 "\nTitulo = " + titulo +
+                "\nAutor = " + autor +
+                "\nCategoria = " + categoria +
                 "\nResumo = " + resumo +
                 "\nSumario = " + sumario +
                 "\nNumero de Paginas = " + numeroPaginas +

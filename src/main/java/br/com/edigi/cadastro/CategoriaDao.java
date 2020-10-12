@@ -9,12 +9,11 @@ import java.sql.SQLException;
 
 public class CategoriaDao {
 
-    ConnectionFactory connectionFactory = new ConnectionFactory();
-    Connection connection = connectionFactory.getConnection();
+    private final Connection connection = ConnectionFactory.getConnection();
 
     public void adiciona(Categoria categoria) throws SQLException {
 
-        String sql = "insert into Categoria" + "(nome)" + "values(?)";
+        String sql = "insert into Categoria (Nome) values(?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -37,10 +36,10 @@ public class CategoriaDao {
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()) {
-            Integer id = resultSet.getInt("id");
-            String nome = resultSet.getString("nome");
-            System.out.println(id);
-            System.out.println(nome);
+            Integer id = resultSet.getInt("IdCategoria");
+            String nome = resultSet.getString("Nome");
+            System.out.println("ID: " + id);
+            System.out.println("Nome: " + nome);
         }
     }
 }

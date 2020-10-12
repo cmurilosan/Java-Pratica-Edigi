@@ -6,14 +6,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AutorDao {
 
-    ConnectionFactory connectionFactory = new ConnectionFactory();
-    Connection connection = connectionFactory.getConnection();
+    private final Connection connection = ConnectionFactory.getConnection();
 
-    public void adiciona(Autor autor) throws SQLException {
-        String sql = "insert into Autor" + "(nome, email)" + "values(?, ?)";
+    public void adiciona(Autor autor) {
+        String sql = "insert into Autor (Nome, Email) values(?, ?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -24,25 +25,35 @@ public class AutorDao {
             statement.execute();
             statement.close();
         } catch (SQLException e) {
-            System.out.println("Já temos um Autor cadastrado com este EMAIL!!!");
-            throw e;
+            throw new RuntimeException(e);
         }
+
     }
 
-    public void getLista() throws SQLException {
+    public List<Autor> listaAutores() {
 
         String sql = "select * from Autor";
 
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
 
-        while (resultSet.next()) {
-            Integer id = resultSet.getInt("id");
-            String nome = resultSet.getString("nome");
-            String email = resultSet.getNString("email");
-            System.out.println(id);
-            System.out.println(nome);
-            System.out.println(email);
+            List<Autor> autores = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                Autor autor = new Autor(
+                        resultSet.getString("Nome"),
+                        resultSet.getNString("Email"));
+
+                autores.add(autor);
+
+            }
+            resultSet.close();
+            statement.close();
+            return autores;
+        } catch (SQLException erro) {
+            throw new IllegalArgumentException("Não foi possível visualizar a lista de autores");
         }
     }
 }

@@ -1,7 +1,13 @@
 package br.com.edigi.main;
 
+import br.com.edigi.cadastro.AutorDao;
+import br.com.edigi.cadastro.CategoriaDao;
+import br.com.edigi.cadastro.ConnectionFactory;
 import br.com.edigi.cadastro.LivroDao;
+import br.com.edigi.modelo.Autor;
+import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
+import com.sun.jdi.connect.spi.Connection;
 
 import java.sql.SQLException;
 
@@ -9,28 +15,33 @@ public class TesteAdicionaLivro {
 
     public static void main(String[] args) throws SQLException {
 
-        Livro java = new Livro("Java",
-                "Esta é a criação do Livro Java",
-                "Livro inserido na lista",
-                300,
-                "978-12-34567-89-0",
-                1,
-                30.00);
+        Autor cassioSantos = new Autor("kakashi Sensei", "kakashi.sensei@email.com");
+        AutorDao autorDao = new AutorDao();
+        autorDao.adiciona(cassioSantos);
 
-        Livro mySql = new Livro("MySql",
-                "Esta é a criação do Livro MySql",
-                "Livro inserido na lista",
-                400,
-                "978-12-52147-89-0",
-                2,
-                50.00);
+        Autor bira = new Autor("kakashi Sensei", "bira.sensei@email.com");
 
-        LivroDao livroDao = new LivroDao();
+        autorDao.adiciona(bira);
+
+//        Categoria programação = new Categoria("Programação");
+//        CategoriaDao categoriaDao = new CategoriaDao();
+//        categoriaDao.adiciona(programação);
+
+//        Livro java = new Livro("Java",
+//                cassioSantos,
+//                programação,
+//                "Esta é a criação do Livro Java",
+//                "Livro inserido na lista",
+//                300,
+//                "978-12-34567-89-0",
+//                1,
+//                30.00);
+//
+//        LivroDao livroDao = new LivroDao();
 //        livroDao.adiciona(java);
-//        livroDao.adiciona(mySql);
 
-//        System.out.println("Salvo com sucesso!");
+        System.out.println("Salvo com sucesso!");
 
-        livroDao.getListaLivros();
+//        livroDao.listar();
     }
 }
