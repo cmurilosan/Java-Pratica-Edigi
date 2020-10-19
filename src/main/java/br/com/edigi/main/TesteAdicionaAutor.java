@@ -10,11 +10,11 @@ public class TesteAdicionaAutor {
 
     public static void main(String[] args) throws SQLException {
 
-        Autor cassioSantos = new Autor("kakashi Sensei", "kakashi.sensei@email.com");
+//        Autor murilo = new Autor("Murilo Santos", "murilo@email.com");
 //
         AutorDao dao = new AutorDao();
 //
-//        dao.adiciona(cassioSantos);
+//        dao.adiciona(murilo);
 //
 //        System.out.println("Gravado!");
 

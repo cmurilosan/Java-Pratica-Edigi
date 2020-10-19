@@ -6,12 +6,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaDao {
 
     private final Connection connection = ConnectionFactory.getConnection();
 
-    public void adiciona(Categoria categoria) throws SQLException {
+    public void adiciona(Categoria categoria) {
 
         String sql = "insert into Categoria (Nome) values(?)";
 
@@ -23,23 +25,30 @@ public class CategoriaDao {
             statement.execute();
             statement.close();
         } catch ( SQLException e) {
-            System.out.println("Já possuímos essa CATEGORIA em nosso cadastro");
-            throw e;
+            throw new RuntimeException(e);
         }
     }
 
-    public void getLista() throws SQLException {
+    public List<Categoria> listaCategorias () {
 
         String sql = "select * from Categoria";
 
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
 
-        while (resultSet.next()) {
-            Integer id = resultSet.getInt("IdCategoria");
-            String nome = resultSet.getString("Nome");
-            System.out.println("ID: " + id);
-            System.out.println("Nome: " + nome);
+            List<Categoria> categorias = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Categoria categoria = new Categoria(resultSet.getString("Nome"));
+
+                categorias.add(categoria);
+            }
+            resultSet.close();
+            statement.close();
+            return categorias;
+        } catch (SQLException erro) {
+            throw new IllegalArgumentException("Não foi possível visualizar a lista de Categorias");
         }
     }
 }
