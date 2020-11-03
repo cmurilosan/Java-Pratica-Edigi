@@ -12,6 +12,10 @@ public class Autor {
         setEmail(email);
     }
 
+    public Long getId() {
+        return id;
+    }
+
     private void setNome(String nome) {
         if(nome.isEmpty() || nome.isBlank()){
             throw new IllegalArgumentException("Campo NOME deve ser preenchido!");

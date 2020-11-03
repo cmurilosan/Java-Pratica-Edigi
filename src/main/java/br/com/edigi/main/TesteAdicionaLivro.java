@@ -17,28 +17,24 @@ public class TesteAdicionaLivro {
 
         Autor cassioSantos = new Autor("kakashi Sensei", "kakashi.sensei@email.com");
         AutorDao autorDao = new AutorDao();
-        autorDao.adiciona(cassioSantos);
+//        autorDao.adiciona(cassioSantos);
 
-        Autor bira = new Autor("kakashi Sensei", "bira.sensei@email.com");
-
-        autorDao.adiciona(bira);
-
-//        Categoria programação = new Categoria("Programação");
-//        CategoriaDao categoriaDao = new CategoriaDao();
+        Categoria programação = new Categoria("Programação");
+        CategoriaDao categoriaDao = new CategoriaDao();
 //        categoriaDao.adiciona(programação);
 
-//        Livro java = new Livro("Java",
-//                cassioSantos,
-//                programação,
-//                "Esta é a criação do Livro Java",
-//                "Livro inserido na lista",
-//                300,
-//                "978-12-34567-89-0",
-//                1,
-//                30.00);
-//
-//        LivroDao livroDao = new LivroDao();
-//        livroDao.adiciona(java);
+        Livro java = new Livro("Java",
+                cassioSantos,
+                programação,
+                "Esta é a criação do Livro Java",
+                "Livro inserido na lista",
+                300,
+                "978-12-34567-89-0",
+                1,
+                30.00);
+
+        LivroDao livroDao = new LivroDao();
+        livroDao.adiciona(java);
 
         System.out.println("Salvo com sucesso!");
 

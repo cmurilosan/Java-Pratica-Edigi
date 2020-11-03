@@ -23,8 +23,8 @@ public class Livro {
                  int edicao,
                  double preco) {
         setTitulo(titulo);
-        this.autor = autor;
-        this.categoria = categoria;
+        setAutor(autor);
+        setCategoria(categoria);
         setResumo(resumo);
         setSumario(sumario);
         setNumeroPaginas(numeroPaginas);
@@ -43,6 +43,30 @@ public class Livro {
             throw new IllegalArgumentException("Campo TÍTULO deve ser preenchido");
         }
         this.titulo = titulo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public String getResumo() {
@@ -143,4 +167,6 @@ public class Livro {
                 "\nPreco = R$ " + preco +
                 "\nISBN = " + isbn;
     }
+
+
 }

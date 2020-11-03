@@ -1,5 +1,7 @@
 package br.com.edigi.cadastro;
 
+import br.com.edigi.modelo.Autor;
+import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
 
 import java.sql.Connection;
@@ -9,10 +11,9 @@ import java.sql.SQLException;
 
 public class LivroDao {
 
-    ConnectionFactory connectionFactory = new ConnectionFactory();
-    Connection connection = connectionFactory.getConnection();
+    private final Connection connection = ConnectionFactory.getConnection();
 
-    public void adiciona(Livro livro) throws SQLException {
+    public void adiciona(Livro livro) {
 
         String sql = "insert into Livro (Titulo, IdAutor, IdCategoria, Resumo, Sumario, Paginas, Isbn, Edicao, Preco)" +
                 "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -21,19 +22,19 @@ public class LivroDao {
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setString(1,livro.getTitulo());
-            statement.setString(2,livro.getResumo());
-            statement.setString(3,livro.getSumario());
-            statement.setInt(4, livro.getNumeroPaginas());
-            statement.setString(5, livro.getIsbn());
-            statement.setString(6, String.valueOf(livro.getEdicao()));
-            statement.setString(7, String.valueOf(livro.getPreco()));
+            statement.setLong(2, livro.getAutor().getId());
+            statement.setLong(3, livro.getCategoria().getId());
+            statement.setString(4,livro.getResumo());
+            statement.setString(5,livro.getSumario());
+            statement.setInt(6, livro.getNumeroPaginas());
+            statement.setString(7, livro.getIsbn());
+            statement.setString(8, String.valueOf(livro.getEdicao()));
+            statement.setString(9, String.valueOf(livro.getPreco()));
 
             statement.execute();
             statement.close();
-            connection.close();
         } catch ( SQLException e) {
-            System.out.println("Livro já cadastrado. Confirme o TÍTULO e ISBN");
-            throw e;
+            throw new RuntimeException(e);
         }
     }
 
