@@ -56,4 +56,9 @@ public class AutorDao {
             throw new IllegalArgumentException("Não foi possível visualizar a lista de autores");
         }
     }
+
+    public Autor buscaAutorPeloEmail(String email) {
+        //busca um autor - select * from autor where email = 'dnejnejnje';
+        return null;
+    }
 }

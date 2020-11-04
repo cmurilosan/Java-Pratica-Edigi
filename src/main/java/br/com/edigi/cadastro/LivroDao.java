@@ -1,7 +1,5 @@
 package br.com.edigi.cadastro;
 
-import br.com.edigi.modelo.Autor;
-import br.com.edigi.modelo.Categoria;
 import br.com.edigi.modelo.Livro;
 
 import java.sql.Connection;
@@ -15,7 +13,7 @@ public class LivroDao {
 
     public void adiciona(Livro livro) {
 
-        String sql = "insert into Livro (Titulo, IdAutor, IdCategoria, Resumo, Sumario, Paginas, Isbn, Edicao, Preco)" +
+        String sql = "insert into Livro (titulo, idAutor, idCategoria, resumo, sumario, paginas, isbn, edicao, preco)" +
                 "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {

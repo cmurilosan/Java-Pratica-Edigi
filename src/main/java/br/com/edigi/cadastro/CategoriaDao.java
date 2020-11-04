@@ -51,4 +51,9 @@ public class CategoriaDao {
             throw new IllegalArgumentException("Não foi possível visualizar a lista de Categorias");
         }
     }
+
+    public Categoria buscaCategoriaPorNome(String programação) {
+        //busca uma categoria
+        return null;
+    }
 }
