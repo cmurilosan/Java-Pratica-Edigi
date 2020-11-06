@@ -39,7 +39,7 @@ public class Livro {
     }
 
     private void setTitulo(String titulo) {
-        if(titulo.isEmpty() || titulo.isBlank()){
+        if(titulo.isBlank()){
             throw new IllegalArgumentException("Campo TÍTULO deve ser preenchido");
         }
         this.titulo = titulo;
@@ -75,7 +75,7 @@ public class Livro {
     }
 
     private void setResumo(String resumo) {
-        if(resumo.isEmpty() || resumo.isBlank()){
+        if(resumo.isBlank()){
             throw new IllegalArgumentException("Campo DESCRIÇÃO deve ser preenchido");
         }
         if(resumo.length() > 500){
@@ -89,7 +89,7 @@ public class Livro {
     }
 
     private void setSumario(String sumario) {
-        if(sumario.isEmpty() || sumario.isBlank()){
+        if(sumario.isBlank()){
             throw new IllegalArgumentException("Sumário deve ser preenchido");
         }
         this.sumario = sumario;
@@ -112,7 +112,7 @@ public class Livro {
     }
 
     private void setIsbn(String isbn) {
-        if(isbn.isEmpty() || isbn.isBlank()){
+        if(isbn.isBlank()){
             throw new IllegalArgumentException("ISBN deve ser preenchido");
         }
         if(!isbn.startsWith("978")){

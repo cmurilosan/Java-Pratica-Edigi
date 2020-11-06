@@ -21,14 +21,14 @@ public class Autor {
     }
 
     private void setNome(String nome) {
-        if(nome.isEmpty() || nome.isBlank()){
+        if(nome.isBlank()){
             throw new IllegalArgumentException("Campo NOME deve ser preenchido!");
         }
         this.nome = nome;
     }
 
     private void setEmail(String email) {
-        if(email.isEmpty() || email.isBlank()) {
+        if(email.isBlank()) {
             throw new IllegalArgumentException("Campo EMAIL deve ser preenchido!");
         }
         if(!email.matches("^([\\w][\\-]?\\.?)+@(([\\w][\\-]?)+\\.)+([A-Za-z]{2,4})+$")) {
