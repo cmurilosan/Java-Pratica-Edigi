@@ -13,11 +13,10 @@ public class LivroDao {
 
     public void adiciona(Livro livro) {
 
-        String sql = "insert into Livro (titulo, idAutor, idCategoria, resumo, sumario, paginas, isbn, edicao, preco)" +
+        String sql = "insert into livro (titulo, id_autor, id_categoria, resumo, sumario, paginas, isbn, edicao, preco)" +
                 "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1,livro.getTitulo());
             statement.setLong(2, livro.getAutor().getId());
@@ -30,12 +29,15 @@ public class LivroDao {
             statement.setString(9, String.valueOf(livro.getPreco()));
 
             statement.execute();
-            statement.close();
         } catch ( SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    /*
+    * Ainda preciso refatorar o listar
+    * Desconsidere no momento ;-)
+    * */
     public void listar() throws SQLException {
 
         String sql = "select * from Livro";

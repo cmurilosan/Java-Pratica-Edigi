@@ -15,15 +15,13 @@ public class CategoriaDao {
 
     public void adiciona(Categoria categoria) {
 
-        String sql = "insert into Categoria (Nome) values(?)";
+        String sql = "insert into categoria (nome) values(?)";
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1,categoria.getNome());
 
             statement.execute();
-            statement.close();
         } catch ( SQLException e) {
             throw new RuntimeException(e);
         }
@@ -31,16 +29,15 @@ public class CategoriaDao {
 
     public List<Categoria> listaCategorias () {
 
-        String sql = "select * from Categoria";
+        String sql = "select * from categoria";
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet resultSet = statement.executeQuery();
 
             List<Categoria> categorias = new ArrayList<>();
 
             while (resultSet.next()) {
-                Categoria categoria = new Categoria(resultSet.getString("Nome"));
+                Categoria categoria = new Categoria(resultSet.getString("nome"));
 
                 categorias.add(categoria);
             }
@@ -52,8 +49,26 @@ public class CategoriaDao {
         }
     }
 
-    public Categoria buscaCategoriaPorNome(String programação) {
-        //busca uma categoria
-        return null;
+    public Categoria buscaCategoriaPorNome(String nome) {
+        String sql = "select * from categoria where nome = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, nome);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                Categoria categoria = new Categoria(
+                        resultSet.getString("nome"));
+                categoria.setId(resultSet.getLong("id_categoria"));
+                return categoria;
+            }
+
+            return null;
+
+        } catch(SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 }

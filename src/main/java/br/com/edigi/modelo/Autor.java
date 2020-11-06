@@ -16,6 +16,10 @@ public class Autor {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private void setNome(String nome) {
         if(nome.isEmpty() || nome.isBlank()){
             throw new IllegalArgumentException("Campo NOME deve ser preenchido!");

@@ -14,6 +14,10 @@ public class Categoria {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private void setNome(String nome) {
         if(nome.isEmpty() || nome.isBlank()) {
             throw new IllegalArgumentException("Nome deve ser obrigatório!");

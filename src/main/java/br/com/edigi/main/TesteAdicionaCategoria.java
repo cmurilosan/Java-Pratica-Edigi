@@ -10,13 +10,13 @@ public class TesteAdicionaCategoria {
 
     public static void main(String[] args) throws SQLException {
 
-//        Categoria programação = new Categoria("Programação");
-//
+        Categoria frontend = new Categoria("Front-End");
+
         CategoriaDao dao = new CategoriaDao();
-//
-//        dao.adiciona(programação);
-//
-//        System.out.println("Gravado com sucesso!");
+
+        dao.adiciona(frontend);
+
+        System.out.println("Gravado com sucesso!");
 
         List<Categoria> categorias = dao.listaCategorias();
 

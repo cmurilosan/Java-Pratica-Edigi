@@ -14,16 +14,14 @@ public class AutorDao {
     private final Connection connection = ConnectionFactory.getConnection();
 
     public void adiciona(Autor autor) {
-        String sql = "insert into Autor (Nome, Email) values(?, ?)";
+        String sql = "insert into autor (nome, email) values(?, ?)";
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setString(1, autor.getNome());
             statement.setString(2, autor.getEmail());
 
             statement.execute();
-            statement.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -32,10 +30,9 @@ public class AutorDao {
 
     public List<Autor> listaAutores() {
 
-        String sql = "select * from Autor";
+        String sql = "select * from autor";
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             ResultSet resultSet = statement.executeQuery();
 
             List<Autor> autores = new ArrayList<>();
@@ -43,8 +40,8 @@ public class AutorDao {
             while (resultSet.next()) {
 
                 Autor autor = new Autor(
-                        resultSet.getString("Nome"),
-                        resultSet.getNString("Email"));
+                        resultSet.getString("nome"),
+                        resultSet.getNString("email"));
 
                 autores.add(autor);
 
@@ -52,13 +49,36 @@ public class AutorDao {
             resultSet.close();
             statement.close();
             return autores;
-        } catch (SQLException erro) {
-            throw new IllegalArgumentException("Não foi possível visualizar a lista de autores");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     public Autor buscaAutorPeloEmail(String email) {
-        //busca um autor - select * from autor where email = 'dnejnejnje';
-        return null;
+
+        String sql = "select * from autor where email = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, email);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                Autor autor = new Autor(
+
+                        resultSet.getString("nome"),
+                        resultSet.getString("email"));
+                autor.setId(resultSet.getLong("id_autor"));
+                return autor;
+            }
+
+            return null;
+
+        } catch(SQLException e){
+                throw new RuntimeException(e);
+        }
+
     }
 }
+

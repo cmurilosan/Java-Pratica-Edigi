@@ -12,12 +12,13 @@ public class TesteAdicionaLivro {
     public static void main(String[] args) {
 
         AutorDao autorDao = new AutorDao();
-        Autor cassioSantos = autorDao.buscaAutorPeloEmail("kakashi.sensei@email.com");
+        Autor murilo = autorDao.buscaAutorPeloEmail("murilo@email.com");
 
         CategoriaDao categoriaDao = new CategoriaDao();
         Categoria programacao = categoriaDao.buscaCategoriaPorNome("Programação");
+
         Livro java = new Livro("Java",
-                cassioSantos,
+                murilo,
                 programacao,
                 "Esta é a criação do Livro Java",
                 "Livro inserido na lista",
